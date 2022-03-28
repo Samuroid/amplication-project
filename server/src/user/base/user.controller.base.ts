@@ -27,9 +27,9 @@ import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserUpdateInput } from "./UserUpdateInput";
 import { User } from "./User";
-import { ProjectFindManyArgs } from "../../project/base/ProjectFindManyArgs";
-import { Project } from "../../project/base/Project";
-import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
+import { ArticleFindManyArgs } from "../../article/base/ArticleFindManyArgs";
+import { Article } from "../../article/base/Article";
+import { ArticleWhereUniqueInput } from "../../article/base/ArticleWhereUniqueInput";
 import { TaskFindManyArgs } from "../../task/base/TaskFindManyArgs";
 import { Task } from "../../task/base/Task";
 import { TaskWhereUniqueInput } from "../../task/base/TaskWhereUniqueInput";
@@ -287,35 +287,33 @@ export class UserControllerBase {
     action: "read",
     possession: "any",
   })
-  @ApiNestedQuery(ProjectFindManyArgs)
+  @ApiNestedQuery(ArticleFindManyArgs)
   async findManyProjects(
     @common.Req() request: Request,
     @common.Param() params: UserWhereUniqueInput,
     @nestAccessControl.UserRoles() userRoles: string[]
-  ): Promise<Project[]> {
-    const query = plainToClass(ProjectFindManyArgs, request.query);
+  ): Promise<Article[]> {
+    const query = plainToClass(ArticleFindManyArgs, request.query);
     const permission = this.rolesBuilder.permission({
       role: userRoles,
       action: "read",
       possession: "any",
-      resource: "Project",
+      resource: "Article",
     });
     const results = await this.service.findProjects(params.id, {
       ...query,
       select: {
-        createdAt: true,
-        description: true,
-        dueDate: true,
-        id: true,
-        name: true,
-
-        owner: {
+        author: {
           select: {
             id: true,
           },
         },
 
-        startDate: true,
+        content: true,
+        createdAt: true,
+        description: true,
+        id: true,
+        title: true,
         updatedAt: true,
       },
     });
@@ -385,7 +383,7 @@ export class UserControllerBase {
   })
   async updateProjects(
     @common.Param() params: UserWhereUniqueInput,
-    @common.Body() body: ProjectWhereUniqueInput[],
+    @common.Body() body: ArticleWhereUniqueInput[],
     @nestAccessControl.UserRoles() userRoles: string[]
   ): Promise<void> {
     const data = {
@@ -498,13 +496,6 @@ export class UserControllerBase {
         createdAt: true,
         estimationDays: true,
         id: true,
-
-        project: {
-          select: {
-            id: true,
-          },
-        },
-
         startDate: true,
         status: true,
         title: true,

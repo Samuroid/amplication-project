@@ -8,14 +8,4 @@ It consists of two packages:
 
 ### Learn more
 
-This is my practice fullstack application using amplication to generate the basic code needed using the following technologies:
-
-Framework - NestJs
-
-Database - Postgres
-
-Version Control - Github
-
-Deployment - Docker
-
-Runtime - Node.js
+You can learn more in the [Amplication documentation](https://docs.amplication.com/guides/getting-started).

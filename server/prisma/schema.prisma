@@ -13,24 +13,22 @@ model User {
   id        String    @id @default(cuid())
   lastName  String?
   password  String
-  projects  Project[]
+  projects  Article[]
   roles     String[]
   tasks     Task[]
   updatedAt DateTime  @updatedAt
   username  String    @unique
 }
 
-model Project {
-  createdAt   DateTime  @default(now())
+model Article {
+  author      User?    @relation(fields: [authorId], references: [id])
+  authorId    String?
+  content     String?
+  createdAt   DateTime @default(now())
   description String?
-  dueDate     DateTime?
-  id          String    @id @default(cuid())
-  name        String
-  owner       User?     @relation(fields: [ownerId], references: [id])
-  ownerId     String?
-  startDate   DateTime?
-  tasks       Task[]
-  updatedAt   DateTime  @updatedAt
+  id          String   @id @default(cuid())
+  title       String
+  updatedAt   DateTime @updatedAt
 }
 
 model Task {
@@ -39,8 +37,6 @@ model Task {
   createdAt      DateTime        @default(now())
   estimationDays Int?
   id             String          @id @default(cuid())
-  project        Project?        @relation(fields: [projectId], references: [id])
-  projectId      String?
   startDate      DateTime?
   status         EnumTaskStatus?
   title          String

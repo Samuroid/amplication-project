@@ -25,8 +25,8 @@ import { DeleteUserArgs } from "./DeleteUserArgs";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { User } from "./User";
-import { ProjectFindManyArgs } from "../../project/base/ProjectFindManyArgs";
-import { Project } from "../../project/base/Project";
+import { ArticleFindManyArgs } from "../../article/base/ArticleFindManyArgs";
+import { Article } from "../../article/base/Article";
 import { TaskFindManyArgs } from "../../task/base/TaskFindManyArgs";
 import { Task } from "../../task/base/Task";
 import { UserService } from "../user.service";
@@ -206,7 +206,7 @@ export class UserResolverBase {
     }
   }
 
-  @graphql.ResolveField(() => [Project])
+  @graphql.ResolveField(() => [Article])
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "read",
@@ -214,14 +214,14 @@ export class UserResolverBase {
   })
   async projects(
     @graphql.Parent() parent: User,
-    @graphql.Args() args: ProjectFindManyArgs,
+    @graphql.Args() args: ArticleFindManyArgs,
     @gqlUserRoles.UserRoles() userRoles: string[]
-  ): Promise<Project[]> {
+  ): Promise<Article[]> {
     const permission = this.rolesBuilder.permission({
       role: userRoles,
       action: "read",
       possession: "any",
-      resource: "Project",
+      resource: "Article",
     });
     const results = await this.service.findProjects(parent.id, args);
 

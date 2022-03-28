@@ -10,7 +10,7 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "nestjs-prisma";
-import { Prisma, Task, User, Project } from "@prisma/client";
+import { Prisma, Task, User } from "@prisma/client";
 
 export class TaskServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -53,13 +53,5 @@ export class TaskServiceBase {
         where: { id: parentId },
       })
       .assignedTo();
-  }
-
-  async getProject(parentId: string): Promise<Project | null> {
-    return this.prisma.task
-      .findUnique({
-        where: { id: parentId },
-      })
-      .project();
   }
 }

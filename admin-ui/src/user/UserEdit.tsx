@@ -10,7 +10,7 @@ import {
   SelectArrayInput,
 } from "react-admin";
 
-import { ProjectTitle } from "../project/ProjectTitle";
+import { ArticleTitle } from "../article/ArticleTitle";
 import { TaskTitle } from "../task/TaskTitle";
 import { ROLES_OPTIONS } from "../user/RolesOptions";
 
@@ -22,12 +22,12 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
         <TextInput label="Last Name" source="lastName" />
         <PasswordInput label="Password" source="password" />
         <ReferenceArrayInput
-          source="project"
-          reference="Project"
+          source="article"
+          reference="Article"
           parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
           format={(value: any) => value && value.map((v: any) => v.id)}
         >
-          <SelectArrayInput optionText={ProjectTitle} />
+          <SelectArrayInput optionText={ArticleTitle} />
         </ReferenceArrayInput>
         <SelectArrayInput
           source="roles"

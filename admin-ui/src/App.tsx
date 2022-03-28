@@ -9,10 +9,10 @@ import { UserList } from "./user/UserList";
 import { UserCreate } from "./user/UserCreate";
 import { UserEdit } from "./user/UserEdit";
 import { UserShow } from "./user/UserShow";
-import { ProjectList } from "./project/ProjectList";
-import { ProjectCreate } from "./project/ProjectCreate";
-import { ProjectEdit } from "./project/ProjectEdit";
-import { ProjectShow } from "./project/ProjectShow";
+import { ArticleList } from "./article/ArticleList";
+import { ArticleCreate } from "./article/ArticleCreate";
+import { ArticleEdit } from "./article/ArticleEdit";
+import { ArticleShow } from "./article/ArticleShow";
 import { TaskList } from "./task/TaskList";
 import { TaskCreate } from "./task/TaskCreate";
 import { TaskEdit } from "./task/TaskEdit";
@@ -51,11 +51,11 @@ const App = (): React.ReactElement => {
           show={UserShow}
         />
         <Resource
-          name="Project"
-          list={ProjectList}
-          edit={ProjectEdit}
-          create={ProjectCreate}
-          show={ProjectShow}
+          name="Article"
+          list={ArticleList}
+          edit={ArticleEdit}
+          create={ArticleCreate}
+          show={ArticleShow}
         />
         <Resource
           name="Task"

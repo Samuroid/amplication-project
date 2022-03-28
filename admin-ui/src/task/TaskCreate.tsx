@@ -12,7 +12,6 @@ import {
 } from "react-admin";
 
 import { UserTitle } from "../user/UserTitle";
-import { ProjectTitle } from "../project/ProjectTitle";
 
 export const TaskCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -26,9 +25,6 @@ export const TaskCreate = (props: CreateProps): React.ReactElement => {
           label="Estimation (days)"
           source="estimationDays"
         />
-        <ReferenceInput source="project.id" reference="Project" label="Project">
-          <SelectInput optionText={ProjectTitle} />
-        </ReferenceInput>
         <DateTimeInput label="Start Date" source="startDate" />
         <SelectInput
           source="status"

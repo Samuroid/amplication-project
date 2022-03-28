@@ -21,7 +21,6 @@ import {
   IsString,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
 import { EnumTaskStatus } from "./EnumTaskStatus";
 @InputType()
 class TaskCreateInput {
@@ -47,18 +46,6 @@ class TaskCreateInput {
     nullable: true,
   })
   estimationDays?: number | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => ProjectWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => ProjectWhereUniqueInput)
-  @IsOptional()
-  @Field(() => ProjectWhereUniqueInput, {
-    nullable: true,
-  })
-  project?: ProjectWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
