@@ -72,7 +72,7 @@ export class UserServiceBase {
     return this.prisma.user.delete(args);
   }
 
-  async findProjects(
+  async findArticles(
     parentId: string,
     args: Prisma.ArticleFindManyArgs
   ): Promise<Article[]> {
@@ -80,7 +80,7 @@ export class UserServiceBase {
       .findUnique({
         where: { id: parentId },
       })
-      .projects(args);
+      .articles(args);
   }
 
   async findTasks(

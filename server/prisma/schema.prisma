@@ -8,12 +8,12 @@ generator client {
 }
 
 model User {
+  articles  Article[]
   createdAt DateTime  @default(now())
   firstName String?
   id        String    @id @default(cuid())
   lastName  String?
   password  String
-  projects  Article[]
   roles     String[]
   tasks     Task[]
   updatedAt DateTime  @updatedAt
