@@ -12,7 +12,6 @@ import {
 } from "react-admin";
 
 import { USER_TITLE_FIELD } from "./UserTitle";
-import { PROJECT_TITLE_FIELD } from "../project/ProjectTitle";
 
 export const UserShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -26,24 +25,19 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="Username" source="username" />
         <ReferenceManyField
-          reference="Project"
+          reference="Article"
           target="UserId"
-          label="Projects"
+          label="Articles"
         >
           <Datagrid rowClick="show">
-            <DateField source="createdAt" label="Created At" />
-            <TextField label="Description" source="description" />
-            <TextField label="Due Date" source="dueDate" />
-            <TextField label="ID" source="id" />
-            <TextField label="Name" source="name" />
-            <ReferenceField
-              label="Project Owner"
-              source="user.id"
-              reference="User"
-            >
+            <ReferenceField label="Author" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
-            <TextField label="Start Date" source="startDate" />
+            <TextField label="Content" source="content" />
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="Description" source="description" />
+            <TextField label="ID" source="id" />
+            <TextField label="Title" source="title" />
             <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>
@@ -59,13 +53,6 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             <DateField source="createdAt" label="Created At" />
             <TextField label="Estimation (days)" source="estimationDays" />
             <TextField label="ID" source="id" />
-            <ReferenceField
-              label="Project"
-              source="project.id"
-              reference="Project"
-            >
-              <TextField source={PROJECT_TITLE_FIELD} />
-            </ReferenceField>
             <TextField label="Start Date" source="startDate" />
             <TextField label="Status" source="status" />
             <TextField label="Title" source="title" />

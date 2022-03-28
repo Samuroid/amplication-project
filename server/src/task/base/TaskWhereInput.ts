@@ -16,7 +16,6 @@ import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { ProjectWhereUniqueInput } from "../../project/base/ProjectWhereUniqueInput";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { EnumTaskStatus } from "./EnumTaskStatus";
 @InputType()
@@ -54,18 +53,6 @@ class TaskWhereInput {
     nullable: true,
   })
   id?: StringFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => ProjectWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => ProjectWhereUniqueInput)
-  @IsOptional()
-  @Field(() => ProjectWhereUniqueInput, {
-    nullable: true,
-  })
-  project?: ProjectWhereUniqueInput;
 
   @ApiProperty({
     required: false,

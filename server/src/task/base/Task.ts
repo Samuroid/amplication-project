@@ -21,7 +21,6 @@ import {
   IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { Project } from "../../project/base/Project";
 import { EnumTaskStatus } from "./EnumTaskStatus";
 @ObjectType()
 class Task {
@@ -60,15 +59,6 @@ class Task {
   @IsString()
   @Field(() => String)
   id!: string;
-
-  @ApiProperty({
-    required: false,
-    type: () => Project,
-  })
-  @ValidateNested()
-  @Type(() => Project)
-  @IsOptional()
-  project?: Project | null;
 
   @ApiProperty({
     required: false,

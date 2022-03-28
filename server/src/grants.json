@@ -91,67 +91,67 @@
   },
   {
     "role": "admin",
-    "resource": "Project",
+    "resource": "Article",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Project",
+    "resource": "Article",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "manager",
-    "resource": "Project",
+    "resource": "Article",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "manager",
-    "resource": "Project",
+    "resource": "Article",
     "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "admin",
-    "resource": "Project",
+    "resource": "Article",
     "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "manager",
-    "resource": "Project",
+    "resource": "Article",
     "action": "update:any",
-    "attributes": "*,!startDate"
+    "attributes": "*"
   },
   {
     "role": "admin",
-    "resource": "Project",
+    "resource": "Article",
     "action": "update:any",
     "attributes": "*,!id"
   },
   {
     "role": "admin",
-    "resource": "Project",
+    "resource": "Article",
     "action": "delete:any",
     "attributes": "*"
   },
   {
     "role": "admin",
-    "resource": "Project",
+    "resource": "Article",
     "action": "read:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Project",
+    "resource": "Article",
     "action": "read:any",
     "attributes": "*"
   },
   {
     "role": "manager",
-    "resource": "Project",
+    "resource": "Article",
     "action": "read:any",
     "attributes": "*"
   },

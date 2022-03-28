@@ -78,12 +78,6 @@ export class TaskControllerBase {
               connect: data.assignedTo,
             }
           : undefined,
-
-        project: data.project
-          ? {
-              connect: data.project,
-            }
-          : undefined,
       },
       select: {
         assignedTo: {
@@ -95,13 +89,6 @@ export class TaskControllerBase {
         createdAt: true,
         estimationDays: true,
         id: true,
-
-        project: {
-          select: {
-            id: true,
-          },
-        },
-
         startDate: true,
         status: true,
         title: true,
@@ -148,13 +135,6 @@ export class TaskControllerBase {
         createdAt: true,
         estimationDays: true,
         id: true,
-
-        project: {
-          select: {
-            id: true,
-          },
-        },
-
         startDate: true,
         status: true,
         title: true,
@@ -200,13 +180,6 @@ export class TaskControllerBase {
         createdAt: true,
         estimationDays: true,
         id: true,
-
-        project: {
-          select: {
-            id: true,
-          },
-        },
-
         startDate: true,
         status: true,
         title: true,
@@ -270,12 +243,6 @@ export class TaskControllerBase {
                 connect: data.assignedTo,
               }
             : undefined,
-
-          project: data.project
-            ? {
-                connect: data.project,
-              }
-            : undefined,
         },
         select: {
           assignedTo: {
@@ -287,13 +254,6 @@ export class TaskControllerBase {
           createdAt: true,
           estimationDays: true,
           id: true,
-
-          project: {
-            select: {
-              id: true,
-            },
-          },
-
           startDate: true,
           status: true,
           title: true,
@@ -340,13 +300,6 @@ export class TaskControllerBase {
           createdAt: true,
           estimationDays: true,
           id: true,
-
-          project: {
-            select: {
-              id: true,
-            },
-          },
-
           startDate: true,
           status: true,
           title: true,

@@ -12,7 +12,7 @@ https://docs.amplication.com/docs/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { ProjectCreateNestedManyWithoutUsersInput } from "./ProjectCreateNestedManyWithoutUsersInput";
+import { ArticleCreateNestedManyWithoutUsersInput } from "./ArticleCreateNestedManyWithoutUsersInput";
 import { Type } from "class-transformer";
 import { TaskCreateNestedManyWithoutUsersInput } from "./TaskCreateNestedManyWithoutUsersInput";
 @InputType()
@@ -49,15 +49,15 @@ class UserCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => ProjectCreateNestedManyWithoutUsersInput,
+    type: () => ArticleCreateNestedManyWithoutUsersInput,
   })
   @ValidateNested()
-  @Type(() => ProjectCreateNestedManyWithoutUsersInput)
+  @Type(() => ArticleCreateNestedManyWithoutUsersInput)
   @IsOptional()
-  @Field(() => ProjectCreateNestedManyWithoutUsersInput, {
+  @Field(() => ArticleCreateNestedManyWithoutUsersInput, {
     nullable: true,
   })
-  projects?: ProjectCreateNestedManyWithoutUsersInput;
+  projects?: ArticleCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: true,

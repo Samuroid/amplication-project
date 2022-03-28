@@ -5,7 +5,6 @@ export type TaskOrderByInput = {
   createdAt?: SortOrder;
   estimationDays?: SortOrder;
   id?: SortOrder;
-  projectId?: SortOrder;
   startDate?: SortOrder;
   status?: SortOrder;
   title?: SortOrder;

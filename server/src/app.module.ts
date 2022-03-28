@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { UserModule } from "./user/user.module";
-import { ProjectModule } from "./project/project.module";
+import { ArticleModule } from "./article/article.module";
 import { TaskModule } from "./task/task.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
@@ -16,7 +16,7 @@ import { GraphQLModule } from "@nestjs/graphql";
   controllers: [],
   imports: [
     UserModule,
-    ProjectModule,
+    ArticleModule,
     TaskModule,
     ACLModule,
     AuthModule,

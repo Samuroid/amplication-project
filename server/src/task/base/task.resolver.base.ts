@@ -26,7 +26,6 @@ import { TaskFindManyArgs } from "./TaskFindManyArgs";
 import { TaskFindUniqueArgs } from "./TaskFindUniqueArgs";
 import { Task } from "./Task";
 import { User } from "../../user/base/User";
-import { Project } from "../../project/base/Project";
 import { TaskService } from "../task.service";
 
 @graphql.Resolver(() => Task)
@@ -141,12 +140,6 @@ export class TaskResolverBase {
               connect: args.data.assignedTo,
             }
           : undefined,
-
-        project: args.data.project
-          ? {
-              connect: args.data.project,
-            }
-          : undefined,
       },
     });
   }
@@ -192,12 +185,6 @@ export class TaskResolverBase {
           assignedTo: args.data.assignedTo
             ? {
                 connect: args.data.assignedTo,
-              }
-            : undefined,
-
-          project: args.data.project
-            ? {
-                connect: args.data.project,
               }
             : undefined,
         },
@@ -249,30 +236,6 @@ export class TaskResolverBase {
       resource: "User",
     });
     const result = await this.service.getAssignedTo(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return permission.filter(result);
-  }
-
-  @graphql.ResolveField(() => Project, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Task",
-    action: "read",
-    possession: "any",
-  })
-  async project(
-    @graphql.Parent() parent: Task,
-    @gqlUserRoles.UserRoles() userRoles: string[]
-  ): Promise<Project | null> {
-    const permission = this.rolesBuilder.permission({
-      role: userRoles,
-      action: "read",
-      possession: "any",
-      resource: "Project",
-    });
-    const result = await this.service.getProject(parent.id);
 
     if (!result) {
       return null;
