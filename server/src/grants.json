@@ -108,6 +108,18 @@
     "attributes": "*"
   },
   {
+    "role": "admin",
+    "resource": "Article",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Article",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
     "role": "manager",
     "resource": "Article",
     "action": "create:any",
@@ -116,7 +128,13 @@
   {
     "role": "admin",
     "resource": "Article",
-    "action": "create:any",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Article",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -128,11 +146,17 @@
   {
     "role": "admin",
     "resource": "Article",
-    "action": "update:any",
-    "attributes": "*,!id"
+    "action": "delete:any",
+    "attributes": "*"
   },
   {
-    "role": "admin",
+    "role": "user",
+    "resource": "Article",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
     "resource": "Article",
     "action": "delete:any",
     "attributes": "*"
@@ -152,96 +176,6 @@
   {
     "role": "manager",
     "resource": "Article",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Task",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Task",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Task",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Task",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Task",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Task",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Task",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Task",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Task",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Task",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Task",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Task",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Task",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Task",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Task",
     "action": "read:any",
     "attributes": "*"
   }

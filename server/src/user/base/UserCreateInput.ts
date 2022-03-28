@@ -11,24 +11,9 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { ArticleCreateNestedManyWithoutUsersInput } from "./ArticleCreateNestedManyWithoutUsersInput";
-import { ValidateNested, IsOptional, IsString } from "class-validator";
-import { Type } from "class-transformer";
-import { TaskCreateNestedManyWithoutUsersInput } from "./TaskCreateNestedManyWithoutUsersInput";
+import { IsString, IsOptional } from "class-validator";
 @InputType()
 class UserCreateInput {
-  @ApiProperty({
-    required: false,
-    type: () => ArticleCreateNestedManyWithoutUsersInput,
-  })
-  @ValidateNested()
-  @Type(() => ArticleCreateNestedManyWithoutUsersInput)
-  @IsOptional()
-  @Field(() => ArticleCreateNestedManyWithoutUsersInput, {
-    nullable: true,
-  })
-  articles?: ArticleCreateNestedManyWithoutUsersInput;
-
   @ApiProperty({
     required: false,
     type: String,
@@ -68,18 +53,6 @@ class UserCreateInput {
   })
   @Field(() => [String])
   roles!: Array<string>;
-
-  @ApiProperty({
-    required: false,
-    type: () => TaskCreateNestedManyWithoutUsersInput,
-  })
-  @ValidateNested()
-  @Type(() => TaskCreateNestedManyWithoutUsersInput)
-  @IsOptional()
-  @Field(() => TaskCreateNestedManyWithoutUsersInput, {
-    nullable: true,
-  })
-  tasks?: TaskCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: true,

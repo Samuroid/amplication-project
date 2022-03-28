@@ -1,11 +1,8 @@
-import { User } from "../user/User";
-
 export type Article = {
-  author?: User | null;
-  content: string | null;
+  content: string;
   createdAt: Date;
-  description: string | null;
   id: string;
+  shortDescription: string;
   title: string;
   updatedAt: Date;
 };

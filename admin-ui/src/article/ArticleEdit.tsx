@@ -1,23 +1,16 @@
 import * as React from "react";
-import {
-  Edit,
-  SimpleForm,
-  EditProps,
-  ReferenceInput,
-  SelectInput,
-  TextInput,
-} from "react-admin";
-import { UserTitle } from "../user/UserTitle";
+import { Edit, SimpleForm, EditProps, TextInput } from "react-admin";
 
 export const ArticleEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
-        <ReferenceInput source="user.id" reference="User" label="Author">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
-        <TextInput label="Content" multiline source="content" />
-        <TextInput label="Description" multiline source="description" />
+        <TextInput label="Content" source="content" />
+        <TextInput
+          label="Short Description"
+          multiline
+          source="shortDescription"
+        />
         <TextInput label="Title" source="title" />
       </SimpleForm>
     </Edit>

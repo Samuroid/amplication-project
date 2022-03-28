@@ -70,26 +70,12 @@ export class ArticleControllerBase {
       );
     }
     return await this.service.create({
-      data: {
-        ...data,
-
-        author: data.author
-          ? {
-              connect: data.author,
-            }
-          : undefined,
-      },
+      data: data,
       select: {
-        author: {
-          select: {
-            id: true,
-          },
-        },
-
         content: true,
         createdAt: true,
-        description: true,
         id: true,
+        shortDescription: true,
         title: true,
         updatedAt: true,
       },
@@ -125,16 +111,10 @@ export class ArticleControllerBase {
     const results = await this.service.findMany({
       ...args,
       select: {
-        author: {
-          select: {
-            id: true,
-          },
-        },
-
         content: true,
         createdAt: true,
-        description: true,
         id: true,
+        shortDescription: true,
         title: true,
         updatedAt: true,
       },
@@ -169,16 +149,10 @@ export class ArticleControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
-        author: {
-          select: {
-            id: true,
-          },
-        },
-
         content: true,
         createdAt: true,
-        description: true,
         id: true,
+        shortDescription: true,
         title: true,
         updatedAt: true,
       },
@@ -232,26 +206,12 @@ export class ArticleControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: {
-          ...data,
-
-          author: data.author
-            ? {
-                connect: data.author,
-              }
-            : undefined,
-        },
+        data: data,
         select: {
-          author: {
-            select: {
-              id: true,
-            },
-          },
-
           content: true,
           createdAt: true,
-          description: true,
           id: true,
+          shortDescription: true,
           title: true,
           updatedAt: true,
         },
@@ -287,16 +247,10 @@ export class ArticleControllerBase {
       return await this.service.delete({
         where: params,
         select: {
-          author: {
-            select: {
-              id: true,
-            },
-          },
-
           content: true,
           createdAt: true,
-          description: true,
           id: true,
+          shortDescription: true,
           title: true,
           updatedAt: true,
         },
