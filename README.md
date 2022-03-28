@@ -11,7 +11,11 @@ It consists of two packages:
 This is my practice fullstack application using amplication to generate the basic code needed using the following technologies:
 
 Framework - NestJs
+
 Database - Postgres
+
 Version Control - Github
+
 Deployment - Docker
+
 Runtime - Node.js
