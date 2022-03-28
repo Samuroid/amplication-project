@@ -212,7 +212,7 @@ export class UserResolverBase {
     action: "read",
     possession: "any",
   })
-  async projects(
+  async articles(
     @graphql.Parent() parent: User,
     @graphql.Args() args: ArticleFindManyArgs,
     @gqlUserRoles.UserRoles() userRoles: string[]
@@ -223,7 +223,7 @@ export class UserResolverBase {
       possession: "any",
       resource: "Article",
     });
-    const results = await this.service.findProjects(parent.id, args);
+    const results = await this.service.findArticles(parent.id, args);
 
     if (!results) {
       return [];
