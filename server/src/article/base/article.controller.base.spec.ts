@@ -13,16 +13,16 @@ const existingId = "existingId";
 const CREATE_INPUT = {
   content: "exampleContent",
   createdAt: new Date(),
-  description: "exampleDescription",
   id: "exampleId",
+  shortDescription: "exampleShortDescription",
   title: "exampleTitle",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
   content: "exampleContent",
   createdAt: new Date(),
-  description: "exampleDescription",
   id: "exampleId",
+  shortDescription: "exampleShortDescription",
   title: "exampleTitle",
   updatedAt: new Date(),
 };
@@ -30,8 +30,8 @@ const FIND_MANY_RESULT = [
   {
     content: "exampleContent",
     createdAt: new Date(),
-    description: "exampleDescription",
     id: "exampleId",
+    shortDescription: "exampleShortDescription",
     title: "exampleTitle",
     updatedAt: new Date(),
   },
@@ -39,8 +39,8 @@ const FIND_MANY_RESULT = [
 const FIND_ONE_RESULT = {
   content: "exampleContent",
   createdAt: new Date(),
-  description: "exampleDescription",
   id: "exampleId",
+  shortDescription: "exampleShortDescription",
   title: "exampleTitle",
   updatedAt: new Date(),
 };

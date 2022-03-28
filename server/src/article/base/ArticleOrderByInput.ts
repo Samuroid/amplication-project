@@ -25,15 +25,6 @@ class ArticleOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  authorId?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
   content?: SortOrder;
 
   @ApiProperty({
@@ -52,7 +43,7 @@ class ArticleOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  description?: SortOrder;
+  id?: SortOrder;
 
   @ApiProperty({
     required: false,
@@ -61,7 +52,7 @@ class ArticleOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  id?: SortOrder;
+  shortDescription?: SortOrder;
 
   @ApiProperty({
     required: false,

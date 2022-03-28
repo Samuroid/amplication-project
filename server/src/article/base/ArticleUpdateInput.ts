@@ -11,22 +11,19 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { ValidateNested, IsOptional, IsString } from "class-validator";
-import { Type } from "class-transformer";
+import { IsString, IsOptional } from "class-validator";
 @InputType()
 class ArticleUpdateInput {
   @ApiProperty({
     required: false,
-    type: () => UserWhereUniqueInput,
+    type: String,
   })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
+  @IsString()
   @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => String, {
     nullable: true,
   })
-  author?: UserWhereUniqueInput | null;
+  content?: string;
 
   @ApiProperty({
     required: false,
@@ -37,18 +34,7 @@ class ArticleUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  content?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  description?: string | null;
+  shortDescription?: string;
 
   @ApiProperty({
     required: false,

@@ -25,7 +25,6 @@ import { DeleteArticleArgs } from "./DeleteArticleArgs";
 import { ArticleFindManyArgs } from "./ArticleFindManyArgs";
 import { ArticleFindUniqueArgs } from "./ArticleFindUniqueArgs";
 import { Article } from "./Article";
-import { User } from "../../user/base/User";
 import { ArticleService } from "../article.service";
 
 @graphql.Resolver(() => Article)
@@ -132,15 +131,7 @@ export class ArticleResolverBase {
     // @ts-ignore
     return await this.service.create({
       ...args,
-      data: {
-        ...args.data,
-
-        author: args.data.author
-          ? {
-              connect: args.data.author,
-            }
-          : undefined,
-      },
+      data: args.data,
     });
   }
 
@@ -179,15 +170,7 @@ export class ArticleResolverBase {
       // @ts-ignore
       return await this.service.update({
         ...args,
-        data: {
-          ...args.data,
-
-          author: args.data.author
-            ? {
-                connect: args.data.author,
-              }
-            : undefined,
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -219,29 +202,5 @@ export class ArticleResolverBase {
       }
       throw error;
     }
-  }
-
-  @graphql.ResolveField(() => User, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Article",
-    action: "read",
-    possession: "any",
-  })
-  async author(
-    @graphql.Parent() parent: Article,
-    @gqlUserRoles.UserRoles() userRoles: string[]
-  ): Promise<User | null> {
-    const permission = this.rolesBuilder.permission({
-      role: userRoles,
-      action: "read",
-      possession: "any",
-      resource: "User",
-    });
-    const result = await this.service.getAuthor(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return permission.filter(result);
   }
 }

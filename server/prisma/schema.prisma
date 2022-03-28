@@ -8,44 +8,21 @@ generator client {
 }
 
 model User {
-  articles  Article[]
-  createdAt DateTime  @default(now())
+  createdAt DateTime @default(now())
   firstName String?
-  id        String    @id @default(cuid())
+  id        String   @id @default(cuid())
   lastName  String?
   password  String
   roles     String[]
-  tasks     Task[]
-  updatedAt DateTime  @updatedAt
-  username  String    @unique
+  updatedAt DateTime @updatedAt
+  username  String   @unique
 }
 
 model Article {
-  author      User?    @relation(fields: [authorId], references: [id])
-  authorId    String?
-  content     String?
-  createdAt   DateTime @default(now())
-  description String?
-  id          String   @id @default(cuid())
-  title       String
-  updatedAt   DateTime @updatedAt
-}
-
-model Task {
-  assignedTo     User?           @relation(fields: [assignedToId], references: [id])
-  assignedToId   String?
-  createdAt      DateTime        @default(now())
-  estimationDays Int?
-  id             String          @id @default(cuid())
-  startDate      DateTime?
-  status         EnumTaskStatus?
-  title          String
-  updatedAt      DateTime        @updatedAt
-}
-
-enum EnumTaskStatus {
-  New
-  Pending
-  Ongoing
-  Done
+  content          String
+  createdAt        DateTime @default(now())
+  id               String   @id @default(cuid())
+  shortDescription String
+  title            String
+  updatedAt        DateTime @updatedAt
 }

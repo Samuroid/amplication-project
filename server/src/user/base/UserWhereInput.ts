@@ -11,26 +11,12 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { ArticleListRelationFilter } from "../../article/base/ArticleListRelationFilter";
-import { ValidateNested, IsOptional } from "class-validator";
-import { Type } from "class-transformer";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { Type } from "class-transformer";
+import { IsOptional } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
-import { TaskListRelationFilter } from "../../task/base/TaskListRelationFilter";
 @InputType()
 class UserWhereInput {
-  @ApiProperty({
-    required: false,
-    type: () => ArticleListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => ArticleListRelationFilter)
-  @IsOptional()
-  @Field(() => ArticleListRelationFilter, {
-    nullable: true,
-  })
-  articles?: ArticleListRelationFilter;
-
   @ApiProperty({
     required: false,
     type: StringNullableFilter,
@@ -63,18 +49,6 @@ class UserWhereInput {
     nullable: true,
   })
   lastName?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => TaskListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => TaskListRelationFilter)
-  @IsOptional()
-  @Field(() => TaskListRelationFilter, {
-    nullable: true,
-  })
-  tasks?: TaskListRelationFilter;
 
   @ApiProperty({
     required: false,

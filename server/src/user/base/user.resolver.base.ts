@@ -25,10 +25,6 @@ import { DeleteUserArgs } from "./DeleteUserArgs";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { User } from "./User";
-import { ArticleFindManyArgs } from "../../article/base/ArticleFindManyArgs";
-import { Article } from "../../article/base/Article";
-import { TaskFindManyArgs } from "../../task/base/TaskFindManyArgs";
-import { Task } from "../../task/base/Task";
 import { UserService } from "../user.service";
 
 @graphql.Resolver(() => User)
@@ -204,57 +200,5 @@ export class UserResolverBase {
       }
       throw error;
     }
-  }
-
-  @graphql.ResolveField(() => [Article])
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
-  async articles(
-    @graphql.Parent() parent: User,
-    @graphql.Args() args: ArticleFindManyArgs,
-    @gqlUserRoles.UserRoles() userRoles: string[]
-  ): Promise<Article[]> {
-    const permission = this.rolesBuilder.permission({
-      role: userRoles,
-      action: "read",
-      possession: "any",
-      resource: "Article",
-    });
-    const results = await this.service.findArticles(parent.id, args);
-
-    if (!results) {
-      return [];
-    }
-
-    return results.map((result) => permission.filter(result));
-  }
-
-  @graphql.ResolveField(() => [Task])
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
-  async tasks(
-    @graphql.Parent() parent: User,
-    @graphql.Args() args: TaskFindManyArgs,
-    @gqlUserRoles.UserRoles() userRoles: string[]
-  ): Promise<Task[]> {
-    const permission = this.rolesBuilder.permission({
-      role: userRoles,
-      action: "read",
-      possession: "any",
-      resource: "Task",
-    });
-    const results = await this.service.findTasks(parent.id, args);
-
-    if (!results) {
-      return [];
-    }
-
-    return results.map((result) => permission.filter(result));
   }
 }

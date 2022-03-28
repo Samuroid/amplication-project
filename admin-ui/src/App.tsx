@@ -13,10 +13,6 @@ import { ArticleList } from "./article/ArticleList";
 import { ArticleCreate } from "./article/ArticleCreate";
 import { ArticleEdit } from "./article/ArticleEdit";
 import { ArticleShow } from "./article/ArticleShow";
-import { TaskList } from "./task/TaskList";
-import { TaskCreate } from "./task/TaskCreate";
-import { TaskEdit } from "./task/TaskEdit";
-import { TaskShow } from "./task/TaskShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -56,13 +52,6 @@ const App = (): React.ReactElement => {
           edit={ArticleEdit}
           create={ArticleCreate}
           show={ArticleShow}
-        />
-        <Resource
-          name="Task"
-          list={TaskList}
-          edit={TaskEdit}
-          create={TaskCreate}
-          show={TaskShow}
         />
       </Admin>
     </div>
